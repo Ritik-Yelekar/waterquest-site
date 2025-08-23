@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WaterQuest — Water Intelligence Platform</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--bg:#0b1220;--bg2:#0c1526;--ink:#eef6ff;--muted:#a7bdd6;--accent:#22d3ee;--accent2:#6366f1;--glass:rgba(255,255,255,.08);--glass-2:rgba(255,255,255,.12);--ripple:0.16;}
+html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;background:radial-gradient(1200px 600px at 10% -20%,#0e1b30 0%,transparent 60%),radial-gradient(900px 500px at 90% 0%,#0a1f35 0%,transparent 55%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 60%,#0a1423 100%);color:var(--ink);}
+.section{scroll-margin-top:96px} .glass{background:var(--glass);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12)}
+.glass-2{background:var(--glass-2);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.16)}
+.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));} .cta:hover{filter:brightness(1.08)}
+.pulse{animation:pulseGlow 6s ease-in-out infinite} @keyframes pulseGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.15)}}
+.logo-shimmer{background:linear-gradient(120deg,transparent,rgba(34,211,238,.25),transparent);background-size:200% 200%;animation:shimmer 6s ease-in-out infinite;} @keyframes shimmer{0%,100%{background-position:200% 0}50%{background-position:-200% 0}}
+#hero{position:relative} #hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.35),rgba(0,0,0,.55));z-index:1;opacity:0;animation:fadeIn .9s ease .1s forwards}
+@keyframes fadeIn{to{opacity:1}} #hero video, #hero .poster{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;}
+#fx{position:absolute;inset:0;z-index:2;} #hero-content{position:relative;z-index:3;}
+/* Carousel */ .carousel-track{display:flex;gap:24px;transition:transform .6s cubic-bezier(.22,.61,.36,1);} .carousel-slide{min-width:100%;border-radius:16px;overflow:hidden;position:relative;}
+.nav a.active{color:white;border-bottom:2px solid var(--accent);}
+</style>
+</head>
+<body>
+<header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b1220cc] backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between nav">
+    <a href="#" class="flex items-center gap-3">
+      <img src="WaterQuest.jpg" class="h-9 w-9 rounded-md logo-shimmer" alt="WaterQuest logo">
+      <span class="font-semibold tracking-tight">WaterQuest</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm text-[color:var(--muted)]">
+      <a href="#overview" class="hover:text-white">Overview</a>
+      <a href="#products" class="hover:text-white">Products</a>
+      <a href="#about" class="hover:text-white">About</a>
+      <a href="#contact" class="hover:text-white">Contact</a>
+      <button id="styleBtn" class="px-3 py-1.5 rounded-md border border-white/10 hover:bg:white/5">Style: Aqua • Ripple Med</button>
+      <a href="https://spcrc.iiit.ac.in/water/" target="_blank" class="px-4 py-2 rounded-lg cta text-slate-900 font-semibold ml-2 pulse">Open Dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<section id="overview" class="section">
+  <div id="hero" class="relative" style="min-height:460px">
+    <img class="poster" src="hero-poster.jpg" alt="Water ripple poster" />
+    <video id="heroVideo" class="hero-video" playsinline muted loop preload="none" poster="hero-poster.jpg" aria-hidden="true"></video>
+    <div class="overlay"></div>
+    <canvas id="fx"></canvas>
+    <div id="hero-content" class="max-w-7xl mx-auto px-6 py-24 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs tracking-wide text-cyan-200 glass border border-white/10">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Live Pilots Running
+        </div>
+        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">Your Water Intelligence <span class="text-cyan-300">Platform</span>.</h1>
+        <p class="mt-4 text-[color:var(--muted)] text-lg">Retrofit analog meters, monitor tanks & borewells, and act on real‑time analytics—without ripping pipes.</p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#contact" class="px-5 py-3 rounded-xl cta text-slate-900 font-semibold hover:scale-[1.02] transition pulse">Talk to Us</a>
+          <a href="https://spcrc.iiit.ac.in/water/" target="_blank" class="px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5">View Dashboard</a>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div class="glass-2 rounded-xl p-4"><div class="metric text-3xl font-bold" data-count="120">0</div><div class="text-xs text-[color:var(--muted)]">Devices Installed</div></div>
+          <div class="glass-2 rounded-xl p-4"><div class="metric text-3xl font-bold" data-count="15">0</div><div class="text-xs text-[color:var(--muted)]">Active Sites</div></div>
+          <div class="glass-2 rounded-xl p-4"><div class="metric text-3xl font-bold" data-count="2.5">0</div><div class="text-xs text-[color:var(--muted)]">ML Litres Saved</div></div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-2 rounded-2xl" style="background: radial-gradient(600px 260px at 50% 0%, rgba(34,211,238,.2), transparent); filter: blur(30px);"></div>
+        <div class="relative rounded-2xl overflow-hidden glass border border-white/10">
+          <div class="p-4 border-b border-white/10 flex items-center justify-between text-sm text:[color:var(--muted)]">
+            <span>Product Overview</span>
+            <div class="flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span><span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span><span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span></div>
+          </div>
+          <div class="relative p-4">
+            <div class="overflow-hidden rounded-xl">
+              <div id="track" class="carousel-track">
+                <div class="carousel-slide"><img src="e5893e32-2504-4a91-b6eb-fa777c83483c.jpg" alt="Pravah" loading="lazy"></div>
+                <div class="carousel-slide"><img src="c3abeca0-bee7-4ce3-8af7-9551c3047c83.jpg" alt="Starr" loading="lazy"></div>
+                <div class="carousel-slide"><img src="8b99cc05-1d3b-4f47-af33-056ef7beac69.jpg" alt="DBore" loading="lazy"></div>
+                <div class="carousel-slide">
+                  <a href="https://spcrc.iiit.ac.in/water/" target="_blank">
+                    <img src="e5893e32-2504-4a91-b6eb-fa777c83483c.jpg" alt="Dashboard" loading="lazy" style="filter:brightness(.8) grayscale(.2)">
+                    <div class="absolute inset-0 grid place-items-center"><span class="px-4 py-2 rounded-lg cta text-slate-900 font-semibold">Open Dashboard</span></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+              <div class="flex gap-2">
+                <button id="prev" class="px-3 py-1 rounded-md border border-white/15 hover:bg-white/5">‹</button>
+                <button id="next" class="px-3 py-1 rounded-md border border-white/15 hover:bg-white/5">›</button>
+              </div>
+              <div id="dots" class="carousel-dots flex gap-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="section">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-extrabold">Products</h2>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <article class="glass p-6 rounded-2xl border border-white/10">
+        <h3 class="text-xl font-semibold">Pravah — Analog Meter Retrofit</h3>
+        <img src="e5893e32-2504-4a91-b6eb-fa777c83483c.jpg" alt="Pravah" class="mt-4 rounded-xl">
+        <p class="mt-3 text-[color:var(--muted)] text-sm">High-accuracy camera and on-device OCR reads analog meters in real time.</p>
+      </article>
+      <article class="glass p-6 rounded-2xl border border-white/10">
+        <h3 class="text-xl font-semibold">Starr — Tank Level Monitor</h3>
+        <img src="c3abeca0-bee7-4ce3-8af7-9551c3047c83.jpg" alt="Starr" class="mt-4 rounded-xl">
+        <p class="mt-3 text-[color:var(--muted)] text-sm">Ultrasonic depth with temperature compensation for accurate volumes.</p>
+      </article>
+      <article class="glass p-6 rounded-2xl border border-white/10">
+        <h3 class="text-xl font-semibold">DBore — Borewell & Deep Tank</h3>
+        <img src="8b99cc05-1d3b-4f47-af33-056ef7beac69.jpg" alt="DBore" class="mt-4 rounded-xl">
+        <p class="mt-3 text-[color:var(--muted)] text-sm">String‑based depth measurement up to 100 m with sensorless tip.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-extrabold">About WaterQuest</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="glass p-6 rounded-2xl border border-white/10">
+        <h3 class="font-semibold text-xl">Vision</h3>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">Become the one‑stop, scalable water‑intelligence platform for organizations worldwide, enabling accurate monitoring, control, and quality management.</p>
+      </div>
+      <div class="glass p-6 rounded-2xl border border-white/10">
+        <h3 class="font-semibold text-xl">Mission</h3>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">Deliver non‑intrusive, cost‑effective sensing with real‑time updates, leakage detection, digital twins, and actionable dashboards for communities, campuses, industries, and cities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold">Contact</h2>
+        <div class="mt-6 text-sm text-[color:var(--muted)]">
+          <p>Email: <a class="text-cyan-300 hover:underline" href="mailto:waterquest207@gmail.com">waterquest207@gmail.com</a></p>
+          <p>Phone: <a class="text-cyan-300 hover:underline" href="tel:+919130190160">+91 9130190160</a></p>
+          <p>Dashboard: <a class="text-cyan-300 hover:underline" target="_blank" href="https://spcrc.iiit.ac.in/water/">spcrc.iiit.ac.in/water</a></p>
+          <p>Location: IIIT Hyderabad, Telangana</p>
+        </div>
+      </div>
+      <form class="glass p-6 rounded-2xl border border-white/10 grid gap-4" onsubmit="return window.handleSubmit(event)">
+        <div><label class="block text-sm">Name</label><input required class="mt-1 w-full rounded-md bg-white/5 border border-white/10 px-3 py-2"></div>
+        <div><label class="block text-sm">Email</label><input type="email" required class="mt-1 w-full rounded-md bg-white/5 border border-white/10 px-3 py-2"></div>
+        <div><label class="block text-sm">Message</label><textarea rows="4" required class="mt-1 w-full rounded-md bg-white/5 border border-white/10 px-3 py-2"></textarea></div>
+        <button class="mt-2 px-5 py-3 rounded-xl cta text-slate-900 font-semibold pulse">Send</button>
+        <p id="form-status" class="text-sm text-emerald-400 hidden">Thanks! Opening your mail client…</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-[color:var(--muted)]">© <span id="year"></span> WaterQuest • Water Intelligence Platform</p>
+    <div class="flex gap-6 text-sm">
+      <a href="#overview" class="hover:underline">Overview</a>
+      <a href="#products" class="hover:underline">Products</a>
+      <a href="#about" class="hover:underline">About</a>
+      <a href="https://spcrc.iiit.ac.in/water/" target="_blank" class="hover:underline">Dashboard</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Lazy-load WebM-first video
+const hero = document.getElementById('hero');
+const vid = document.getElementById('heroVideo');
+const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){ if(!vid.dataset.loaded){ 
+  vid.innerHTML = '<source src="hero-ripple.webm" type="video/webm"><source src="hero-ripple.mp4" type="video/mp4">';
+  vid.load(); vid.play().catch(()=>{}); vid.dataset.loaded=1;
+}}})},{rootMargin:'200px 0px', threshold:0});
+io.observe(hero);
+
+// Simple shimmer particles
+const canvas=document.getElementById('fx'); const ctx=canvas.getContext('2d'); let W,H,t=0; const parts=Array.from({length:40},()=>({x:Math.random(),y:Math.random(),r:Math.random()*2+.5}));
+function size(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=460; } window.addEventListener('resize',size); size();
+(function loop(){ t+=0.008; ctx.clearRect(0,0,W,H); ctx.fillStyle='rgba(34,211,238,.06)'; parts.forEach(p=>{ const px=(p.x+t*0.02)%1*W; const py=(p.y+Math.sin(t+p.x*6)*0.002)*H; ctx.beginPath(); ctx.arc(px,py,p.r,0,Math.PI*2); ctx.fill(); }); requestAnimationFrame(loop); })();
+
+// Carousel
+const track=document.getElementById('track'); const slides=document.querySelectorAll('.carousel-slide'); const dots=document.getElementById('dots'); let idx=0, timer;
+slides.forEach((_,i)=>{const b=document.createElement('button'); b.setAttribute('aria-label','slide '+(i+1)); b.onclick=()=>go(i); dots.appendChild(b);});
+function upd(){ track.style.transform='translateX(-'+(idx*100)+'%)'; Array.from(dots.children).forEach((d,i)=>d.setAttribute('aria-current',i===idx)); }
+function go(i){ idx=(i+slides.length)%slides.length; upd(); res(); } function nxt(){ go(idx+1); } function prv(){ go(idx-1); }
+document.getElementById('next')?.addEventListener('click',nxt); document.getElementById('prev')?.addEventListener('click',prv);
+function res(){ clearInterval(timer); timer=setInterval(nxt, 3500); } res();
+
+// Counters
+const io2=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ const el=e.target; const end=parseFloat(el.dataset.count); let c=0; const step=end/80; const id=setInterval(()=>{ c=Math.min(end,c+step); el.textContent = (String(end).includes('.')?c.toFixed(1):Math.round(c)); if(c>=end) clearInterval(id); },16); io2.unobserve(el); } }) });
+document.querySelectorAll('.metric').forEach(m=>io2.observe(m));
+
+// Style switcher
+const styleBtn=document.getElementById('styleBtn'); let mode=1;
+function apply(){ const root=document.documentElement;
+  if(mode===0){root.style.setProperty('--ripple','0.08'); styleBtn.textContent='Style: Aqua • Ripple Low';}
+  if(mode===1){root.style.setProperty('--ripple','0.16'); root.style.setProperty('--accent','#22d3ee'); root.style.setProperty('--accent2','#6366f1'); styleBtn.textContent='Style: Aqua • Ripple Med';}
+  if(mode===2){root.style.setProperty('--ripple','0.28'); styleBtn.textContent='Style: Aqua • Ripple High';}
+  if(mode===3){root.style.setProperty('--accent','#14b8a6'); root.style.setProperty('--accent2','#4f46e5'); styleBtn.textContent='Style: Teal/Indigo • Ripple Med';}
+}
+styleBtn?.addEventListener('click',()=>{mode=(mode+1)%4; apply();}); apply();
+
+// Contact
+window.handleSubmit=(e)=>{e.preventDefault(); const f=e.target; const [n,em,msg]=[...f.querySelectorAll('input,textarea')].map(x=>encodeURIComponent(x.value)); const href=`mailto:waterquest207@gmail.com?subject=Demo/Quote%20Request%20from%20${n}&body=Email:%20${em}%0A%0A${msg}`; location.href=href; return false;};
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
